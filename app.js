@@ -134,6 +134,8 @@ app.put("/notes/:id", async (req, res) => {
     res.redirect("/all-notes/delete");
 })
 // ------------------------------------------------------------------------------------------
-app.listen(3031, () => {
+
+const port = process.env.PORT || 3031;
+app.listen(port, () => {
     console.log("app is listening to port: 3031");
 });
