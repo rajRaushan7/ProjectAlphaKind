@@ -5,21 +5,12 @@
         <div class="card-container">
             <% for (let notes of allNotes) { %>
                 <div class="card">
-                    <div class="notes-card-image">
-                        <img src="<%=notes.image%>" alt="notes-banner">
-                    </div>
                     <div class="notes-title">
-                        <%= notes.chapterName %>
+                        <%= notes.title %>
                     </div>
                     <div class="notes-btn">
-                        <a href="/show-notes?path=<%= notes.path %>">Show Notes</a><br>
-                        <a href="/download?path=<%= notes.path %>">Download Notes</a><br><br>
+                        <a href="<%= notes.pdfURL %>" target="_blank">Open Notes</a><br>
                     </div>
-                    <!-- <div class="del-btn">
-                        <form method="POST" action="/notes/<%= notes._id %>?_method=DELETE">
-                            <button>Delete</button>
-                        </form>
-                    </div> -->
                 </div>
                 <% } %>
         </div>

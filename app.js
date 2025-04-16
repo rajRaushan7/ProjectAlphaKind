@@ -14,10 +14,10 @@ const app = express();
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {  // KON SE FOLDER KE ANDAR FILE KO STORE KERNA HAI
         return cb(null, './public/uploads');  // cb is CALL BACK
-      },
-      filename: function (req, file, cb) {
-        return cb(null, `${Date.now()}-${file.originalname}`); 
-      },
+    },
+    filename: function (req, file, cb) {
+        return cb(null, `${Date.now()}-${file.originalname}`);
+    },
 });
 
 const upload = multer({ storage });
@@ -36,7 +36,7 @@ async function main() {
     await mongoose.connect("mongodb+srv://raj1618192:zNZufSheuGHCIZbp@cluster0.mbphveh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 };
 // -----------------------------------------------------------------------------------------------------
-// APP.SET
+// APP.SET  (middlewares)
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -49,9 +49,14 @@ app.use("/public/uploads", express.static(path.join(__dirname, "public/uploads")
 //  ALL APIs
 
 // HOME ROUTE
-app.get('/' , (req, res) => {
+app.get('/', (req, res) => {
     res.render('listing/home.ejs');
-})
+});
+
+// Admin Route
+app.get('/userAkash', (req, res) => {
+    res.render('listing/userAkash.ejs');
+});
 
 // SEMESTER ROUTE
 app.get('/semester', (req, res) => {
@@ -61,8 +66,8 @@ app.get('/semester', (req, res) => {
 // SUBJECT ROUTE
 app.get('/subjects', async (req, res) => {
     let id = req.query.id;
-    let allNotes = await Note.find({ semester: `${id}`});
-    res.render('listing/subjects.ejs', {id, allNotes});
+    let allNotes = await Note.find({ semester: `${id}` });
+    res.render('listing/subjects.ejs', { id, allNotes });
 });
 
 // NOTES ROUTE
@@ -73,65 +78,49 @@ app.get('/notes', async (req, res) => {
 });
 
 // ALL NOTES ROUTE
-app.get("/all-notes", async(req, res) => {
+app.get("/all-notes", async (req, res) => {
     let allNotes = await Note.find({});
-    res.render("listing/all-notes.ejs", {allNotes});
+    res.render("listing/all-notes.ejs", { allNotes });
 })
-app.get("/all-notes/delete", async(req, res) => {
+app.get("/adminAkash", async (req, res) => {
     let allNotes = await Note.find({});
-    res.render("listing/all-notes-delete.ejs", {allNotes});
+    res.render("listing/adminAkash.ejs", { allNotes });
 })
-
-// OPEN NOTES ROUTE
-app.get('/show-notes', async (req, res) => {
-    let path = req.query.path;
-    res.render("listing/open-notes", {path});
-});
-
-// DOWNLOAD NOTES
-app.get("/download", (req, res) => {
-    let path = req.query.path;
-    res.download(`./public/${path}`);
-});
 
 // DELETE ROUTE
 app.delete("/notes/:id", async (req, res) => {
-    let {id} = req.params;  // id created by database
+    let { id } = req.params;  // id created by database
     let notes = await Note.findById(id);
-    let originalPath = notes.path;
-    let path = "public/" + originalPath;
-    fs.unlinkSync(path); // delete file from folder
-    const referer = req.get("Referer");
     await Note.findByIdAndDelete(id);
-    res.redirect(referer || "/");
+    res.redirect("/adminAkash");
 });
 
 // UPLOAD ROUTE
-app.get("/upload-file", (req, res) => {
-    res.render("listing/upload-file.ejs");
-});
-app.post("/upload-file", upload.single("pdf"), (req, res) => {
-    let originalPath = req.file.path;
-    let path = originalPath.replace("public/", "");
-    res.render("listing/upload", {path});
+app.get("/upload", (req, res) => {
+    res.render("listing/upload.ejs");
 });
 
 app.post("/upload", async (req, res) => {
-    const newNote = new Note(req.body.listing);
-    await newNote.save();
-    res.redirect("/all-notes");
+    const note = req.body.listing;
+    if(!(note.semester >= 1 && note.semester <= 8)){
+        res.send("Please Select A Valid Semester");
+    } else {
+        const newNote = new Note(note);
+        await newNote.save();
+        res.redirect("/all-notes");
+    }
 });
 
 // EDIT
 app.get("/edit/:id", async (req, res) => {
     let { id } = req.params;
     let notes = await Note.findById(id);
-    res.render("listing/edit.ejs", {notes});
+    res.render("listing/edit.ejs", { notes });
 });
 app.put("/notes/:id", async (req, res) => {
-    let {id} = req.params;
-    await Note.findByIdAndUpdate(id, {...req.body.listing});
-    res.redirect("/all-notes/delete");
+    let { id } = req.params;
+    await Note.findByIdAndUpdate(id, { ...req.body.listing });
+    res.redirect("/adminAkash");
 })
 // ------------------------------------------------------------------------------------------
 

@@ -2,18 +2,26 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const notesSchema = new Schema({
-    semester :{
+    title: {
         type: String,
-        required: true,
+        required: true
     },
-    subject : String,
-    chapterName: String,
-    image : {
-        type : String,
-        set : (v) => v === "" ? "https://cdn.pixabay.com/photo/2013/07/18/10/55/dna-163466_1280.jpg": v,
-        default: "https://cdn.pixabay.com/photo/2013/07/18/10/55/dna-163466_1280.jpg"
+    pdfURL: {
+        type: String,
+        required: true
     },
-    path : String,
+    semester: {
+        type: Number,
+        required: true
+    },
+    subject: {
+        type: String,
+        required: true
+    },
+    // uploadedAt: {
+    //     type: Date,
+    //     default: Date.now
+    // }
 });
 
 const Note = mongoose.model("Note", notesSchema);
