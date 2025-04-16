@@ -1,0 +1,15 @@
+<%layout("/layouts/boilerplate") %>
+
+    <body>
+        <h1>Select your subject</h1>
+        <% subjects=[]; for (let sub of allNotes){ subjects.push(sub.subject); } subjects=[...new Set(subjects)]; %>
+            <div class="subject-container">
+                <% for (let sub of subjects) { %>
+                    <a href="/notes?sub=<%= sub %>">
+                        <div class="subjects-card">
+                            <div class="sub-name"><%= sub %></div>
+                        </div>
+                    </a>
+                    <% } %>
+            </div>
+    </body>

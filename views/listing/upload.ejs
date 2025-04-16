@@ -1,0 +1,27 @@
+<%layout("/layouts/boilerplate") %>
+
+<body>
+    <form method="POST" action="/upload">
+        <label for="listing[semester]">Select Your Semester:</label>
+        <input type="radio" id="1st" name="listing[semester]" value="1st"><label for="1st">1st</label>
+        <input type="radio" id="2nd" name="listing[semester]" value="2nd"><label for="2nd">2nd</label>
+        <input type="radio" id="3rd" name="listing[semester]" value="3rd"><label for="3rd">3rd</label>
+        <input type="radio" id="4th" name="listing[semester]" value="4th"><label for="4th">4th</label>
+        <input type="radio" id="5th" name="listing[semester]" value="5th"><label for="5th">5th</label>
+        <input type="radio" id="6th" name="listing[semester]" value="6th"><label for="6th">6th</label>
+        <input type="radio" id="7th" name="listing[semester]" value="7th"><label for="7th">7th</label>
+        <input type="radio" id="8th" name="listing[semester]" value="8th"><label for="8th">8th</label>
+        <br><br>
+        <label for="subject">Enter Subject Name: </label>
+        <input type="text" name="listing[subject]" placeholder="Subject Name">
+        <br><br>
+        <label for="chapterName">Enter Chapter Name: </label>
+        <input type="text" name ="listing[chapterName]" id="chapterName" placeholder="Chapter Name">
+        <br><br>
+        <label for="image">Image URL: </label>
+        <input type="text" name="listing[image]" placeholder="URL" id="image">
+        <br><br>
+        <input style="display: none;" type="text" name="listing[path]" value="<%=path%>" id="path">
+        <button>Submit</button>
+    </form>
+</body>

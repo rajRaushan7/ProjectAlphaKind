@@ -1,0 +1,27 @@
+<%layout("/layouts/boilerplate") %>
+
+    <body>
+        <h1>All Notes List</h1>
+        <div class="card-container">
+            <% for (let notes of allNotes) { %>
+                <div class="card">
+                    <div class="notes-card-image">
+                        <img src="<%=notes.image%>" alt="notes-banner">
+                    </div>
+                    <div class="notes-title">
+                        <%= notes.chapterName %>
+                    </div>
+                    <div class="notes-btn">
+                        <a href="/show-notes?path=<%= notes.path %>">Show Notes</a><br>
+                        <a href="/download?path=<%= notes.path %>">Download Notes</a><br><br>
+                    </div>
+                    <!-- <div class="del-btn">
+                        <form method="POST" action="/notes/<%= notes._id %>?_method=DELETE">
+                            <button>Delete</button>
+                        </form>
+                    </div> -->
+                </div>
+                <% } %>
+        </div>
+
+    </body>
