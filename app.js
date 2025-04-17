@@ -107,7 +107,7 @@ app.post("/upload", async (req, res) => {
     } else {
         const newNote = new Note(note);
         await newNote.save();
-        res.redirect("/all-notes");
+        res.redirect("/adminAkash");
     }
 });
 
