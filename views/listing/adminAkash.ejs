@@ -4,11 +4,23 @@
         <div class="card-container">
             <% for (let notes of allNotes) { %>
                 <div class="card">
-                    <div class="notes-title">
-                        <%= notes.title %>
-                    </div>
+                    <div class="cardInfo">
+                        <div class="pdfIcon">
+                          <i class="fa-solid fa-file"></i>
+                          <p>PDF</p>
+                        </div>
+                        <div class="div">
+                          <div class="notes-title">
+                            <%= notes.title %>
+                          </div>
+                          <div class="notesInfo">
+                            Semester: <%= notes.semester %> <br>
+                              Subject: <%= notes.subject %>
+                          </div>
+                        </div>
+                      </div>
                     <div class="notes-btn">
-                        <a href="<%= notes.pdfURL %>" target="_blank">Open Notes</a><br>
+                        <a href="<%= notes.pdfURL %>" target="_blank">Open</a><br>
                     </div>
                     <div class="user-btns">
                         <div class="del-btn">

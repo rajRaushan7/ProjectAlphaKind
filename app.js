@@ -119,8 +119,13 @@ app.get("/edit/:id", async (req, res) => {
 });
 app.put("/notes/:id", async (req, res) => {
     let { id } = req.params;
-    await Note.findByIdAndUpdate(id, { ...req.body.listing });
-    res.redirect("/adminAkash");
+    const note = req.body.listing;
+    if(!(note.semester >= 1 && note.semester <=8)){
+        res.send("Please Select A Valid Semester");
+    } else{
+        await Note.findByIdAndUpdate(id, { ...req.body.listing });
+        res.redirect("/adminAkash");
+    }
 })
 // ------------------------------------------------------------------------------------------
 

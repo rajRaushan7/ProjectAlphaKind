@@ -1,28 +1,29 @@
 <%layout("/layouts/boilerplate") %>
 
-    <body>
-        <div class="card-container">
-            <% for (let notes of allNotes) { %>
-            <div class="card">
-                <div class="notes-title">
-                    <%= notes.title %>
-                </div>
-                <div class="notes-btn">
-                    <a href="<%= notes.pdfURL %>" target="_blank">Open Notes</a><br>
-                </div>
+  <body>
+    <div class="card-container">
+      <% for (let notes of allNotes) { %>
+        <div class="card">
+          <div class="cardInfo">
+            <div class="pdfIcon">
+              <i class="fa-solid fa-file"></i>
+              <p>PDF</p>
             </div>
-            <% } %>
+            <div class="div">
+              <div class="notes-title">
+                <%= notes.title %>
+              </div>
+              <div class="notesInfo">
+                Semester: <%= notes.semester %> <br>
+                  Subject: <%= notes.subject %>
+              </div>
+            </div>
+          </div>
+          <div class="notes-btn">
+            <a href="<%= notes.pdfURL %>" target="_blank">Open</a><br>
+          </div>
         </div>
-        
-    </body>
+        <% } %>
+    </div>
 
-
-    <!-- <div className='container'>
-        {notes && notes.length > 0 ? (
-          notes.map((note) => (
-            <NoteItem key={note._id} note={note} />
-          ))
-        ) : (
-          <p>No Notes Found</p>
-        )}
-      </div> -->
+  </body>

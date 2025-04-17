@@ -5,7 +5,7 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #191919;
+    background-color: rgb(28,30,35);
     color: white;
 }
 .container{
@@ -17,11 +17,14 @@ body{
 
 .nav-container {
     height: 5rem;
-    background-color: #0C243C;
+    background-color: rgb(20, 22, 25);
+    backdrop-filter: blur(5px);
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
 }
 .nav-options a{
     text-decoration: none;
@@ -38,6 +41,21 @@ body{
     height: 4rem;
     border-radius: 50%;
     margin-left: 1rem;
+}
+.brand{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 17rem;
+}
+.brand p{
+    text-decoration: none;
+    color: white;
+    margin-right: 1rem;
+    font-size: 1.7rem;
+    padding: 1rem;
+    font-family: "Edu AU VIC WA NT Arrows", cursive;
+    font-weight: 700;
 }
 .fa-bars{
     color: white;
@@ -56,10 +74,14 @@ body{
     backdrop-filter: blur(5px);
     display: none;
     flex-direction: column;
+    z-index: 5;
 }
 .side-nav-options{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    height: 30vh;
+    justify-content: center;
 }
 .side-nav-options a{
     text-decoration: none;
@@ -107,7 +129,7 @@ body{
 
 /* ----------------------------------- FOOTER ------------------------------------------------- */
 .footer-container{
-    background-color: #008080;
+    background-color: rgb(53, 79, 148);
     color: white;
     height: 3rem;
     display: flex;
@@ -120,16 +142,19 @@ body{
     padding-right: 1rem;
     cursor: pointer;
 }
-.social-media i{
+.social-media a{
     font-size: 1.3rem;
     margin-right: 0.7rem;
     cursor: pointer;  
     transition: 0.3s; 
 }
-.social-media i:hover{
+.social-media a:hover{
     transform: scale(1.2);
     opacity: 0.7;
 }   
+a{
+    color: white;
+}
 
 /* ----------------------------------- SEMESTER ------------------------------------------------- */  
 /* .sem-container{
@@ -157,8 +182,8 @@ body{
     width: 15rem;
     padding: 00.5rem;
     margin: 1rem 1rem;
-    border-radius: 1rem;
-    background: linear-gradient(135deg, #0086ab, #0e345b);
+    border-radius: 15px;
+    background: linear-gradient(135deg, #0a2d37, #082541);
     color: #ffffff;
     font-weight: 500;
     font-size: 2rem;
@@ -171,32 +196,36 @@ body{
 
 /* ----------------------------------- NOTES CARD ------------------------------------------------- */ 
 
-/* .card-container{
+.card-container{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-} */
+    align-items: center;
+}
 .card{
-    border: 1px solid white;
+    background-color: rgb(35,39,44);
     margin: 2rem;
-    padding: 2rem;
+    padding: 1rem;
+    height: 15rem;
+    width: 20rem;
     border-radius: 15px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
+}
+.cardInfo{
+    display: flex;
+
 }
 .notes-title{
     font-weight: 600;
     font-size: 1.5rem;
 }
 .notesInfo{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-direction: column;
-    margin-left: 1rem;
+    color: rgb(175, 175, 175);
+    margin-top: 1rem;
+    font-size: 1rem;
 }
 .openBtn a{
     font-size: 1.4rem;
@@ -205,10 +234,10 @@ body{
     padding: 0.7rem;
 }
 .openBtn{
-    background-color: rgb(41, 41, 41);
+    background-color: #2e2e2e;
     padding: 0.7rem;
     border: 1px solid rgb(112, 112, 112);
-    border-radius: 15px;
+    border-radius: 5px;
     transition: 0.2s;
 }
 .openBtn:hover {
@@ -216,36 +245,43 @@ body{
     box-shadow: 0 0 25px rgb(255, 255, 255);
 }
 .del-btn button{
-    background-color: #FF4545;
+    background-color: #690000;
     color: white;
     height: 2rem;
     width: 4rem;
-    border-radius: 2rem;
+    border-radius: 15px;
     border: none;
-    margin: 0.7rem 0;
+    padding: 0.5 1.5rem;
     transition: 0.2s;
 }
 .del-btn button:hover{
     transform: scale(1.07);
     opacity: 0.7;
-    box-shadow: 8px 8px 15px #474747;
+    box-shadow: 0px 0px 15px #ff0000;
 }
 .edit-btn a{
-    background-color: #5CB338;
+    background-color: #1f4889;
     text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
     color: white;
     height: 2rem;
     width: 4rem;
-    border-radius: 2rem;
+    border-radius: 15px;
     border: none;
     margin: 0.7rem 1rem;
-    padding: 0.4rem 1rem;
+    padding: 0.5rem 1.5rem;
     transition: 0.2s;
 }
 .edit-btn a:hover{
     transform: scale(1.07);
     opacity: 0.7;
     box-shadow: 8px 8px 15px #474747;
+}
+.user-btns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .notes-btn{
     display: flex;
@@ -255,22 +291,41 @@ body{
 .notes-btn a{
     text-decoration: none;
     margin: 0 0.5rem;
-    background-color: #a01fd7;
+    background-color: rgb(27,29,34);
     color: white;
-    min-height: 2rem;
-    max-height: 2.5rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+    height: 2rem;
     display: flex;
-    padding: 0.2rem 0.5rem;
+    padding: 0.5rem 1.5rem;
     align-items: center;
     justify-content: center;
     text-align: center;
-    border-radius: 2rem;
+    border-radius: 15px;
     transition: 0.2s;
 }
 .notes-btn a:hover{
     transform: scale(1.07);
     box-shadow: 0 0 15px #ffffff;
 }
+.pdfIcon i{
+    color: rgb(98, 88, 154);
+    font-size: 4rem;
+    margin: 0 1rem;
+}
+.pdfIcon {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  }
+  .pdfIcon p{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+  }
 
 /* ----------------------------------- SUBJECTS ------------------------------------------------- */
 .sub-name{
@@ -279,21 +334,20 @@ body{
     font-weight: 450;
 }
 .subjects-card{
-    height: 2rem;
-    background-color: #CBDCEB;
+    height: 2.5rem;
+    background-color: rgb(35,39,44);
     display: flex;
     align-items: center;
     margin: 1rem;
     padding: 1rem;
     min-width: 10rem;
     border-radius: 1rem;
-    box-shadow: 5px 5px 15px #646464;
     transition: 0.2s;
 }
 .subjects-card:hover{
-    transform: scale(1.03);
+    transform: scale(1.02);
     opacity: 0.7;
-    box-shadow: 11px 11px 25px #393939;
+    box-shadow: 0px 0px 15px #ffffff;
 }
 .subject-container{
     display: flex;
@@ -311,16 +365,16 @@ a{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1rem;
     margin-left: 2rem;
 }   
 .uploadInputs {
     flex-wrap: wrap;
     padding: 0.5rem;
     margin: 1.5rem;
-    height: 2rem;
+    height: 1.4rem;
     min-width: 10rem;
-    width: 55rem;
+    width: 12rem;
     min-width: 5rem;
     font-size: 1.1rem;
     background-color: rgb(34, 34, 34);
@@ -328,9 +382,10 @@ a{
     border: 2px solid rgb(97, 97, 97);
     border-radius: 0.7rem;
 }
+
 #uploadNotes {
     flex-wrap: wrap;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     background-color: rgb(79, 79, 79);
     color: white;
     margin: 1.5rem;
@@ -351,7 +406,7 @@ a{
     box-shadow: 0 0 25px rgb(255, 255, 255);
 }
 .semSelect{
-    font-size: 1.7rem;
+    font-size: 1rem;
     margin-top: 1rem;
 }
 .semSelect input{
@@ -374,4 +429,113 @@ a{
     background-color: #191919;
     color: white;
     text-align: center;
+}
+
+/* --------------------------- HOME PAGE --------------------- */
+.banner{
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    height: 40rem;
+    background-image: url("../Images/banner.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    border-radius: 15px;
+}
+@media (max-width: 650px){
+    .banner{
+        height: 20rem;
+    }
+}
+.overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.66);
+    border-radius: 15px;
+}
+.bannerText{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.welcome{
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+}
+.description{
+    font-size: 1rem;
+    margin-top: 0.3rem;
+    text-align: center;
+    color: rgb(212, 212, 212);
+}
+.webInfo{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.infoBox{
+    width: 40%;
+    background-color: rgb(35,39,44);
+    padding: 2rem;
+    margin: 3rem 1rem;
+    height: 20rem;
+    border-radius: 15px;
+}
+
+.heading{
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+.text{
+    font-size: 1rem;
+    color: rgb(195, 195, 195);
+    line-height: 1.5rem;
+}
+.text i{
+    font-size: 2rem;
+    margin-right: 1rem;
+}
+@media (max-width: 1292px){
+    .infoBox{
+        height: 25rem;
+    }
+}
+@media (max-width: 1028px){
+    .heading{
+        font-size: 1.7rem;
+    }
+    .text{
+        font-size: 0.7rem;
+        line-height: 1rem;
+    }
+    .infoBox{
+        height: 20rem;
+        width: 25%;
+    }
+}
+@media(max-width: 955px){
+    .infoBox{
+        width: 60%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+@media (max-width: 471px){
+    .infoBox{
+        width: 70%;
+        height: 22rem;
+    }
+    .heading{
+        margin-bottom: 1rem;
+    }
 }

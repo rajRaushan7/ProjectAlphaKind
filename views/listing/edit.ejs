@@ -2,24 +2,38 @@
 
 <body>
     <form method="POST" action="/notes/<%=notes._id%>?_method=PUT">
-        <label for="listing[semester]">Select Your Semester:</label>
-        <input type="radio" id="1st" name="listing[semester]" value="1"><label for="1st">1st</label>
-        <input type="radio" id="2nd" name="listing[semester]" value="2"><label for="2nd">2nd</label>
-        <input type="radio" id="3rd" name="listing[semester]" value="3"><label for="3rd">3rd</label>
-        <input type="radio" id="4th" name="listing[semester]" value="4"><label for="4th">4th</label>
-        <input type="radio" id="5th" name="listing[semester]" value="5"><label for="5th">5th</label>
-        <input type="radio" id="6th" name="listing[semester]" value="6"><label for="6th">6th</label>
-        <input type="radio" id="7th" name="listing[semester]" value="7"><label for="7th">7th</label>
-        <input type="radio" id="8th" name="listing[semester]" value="8"><label for="8th">8th</label>
-        <br><br>
-        <label for="subject">Enter Subject Name: </label>
-        <input type="text" name="listing[subject]" placeholder="Subject Name" value="<%=notes.subject%>">
-        <br><br>
-        <label for="chapterName">Enter Chapter Name: </label>
-        <input type="text" name ="listing[title]" id="chapterName" placeholder="Chapter Name" value="<%=notes.title%>">
-        <br><br>
-        <label for="image">PDf URL: </label>
-        <input type="text" name="listing[pdfURL]" placeholder="URL" id="pdfURL" value="<%=notes.pdfURL%>">
-        <button>Submit</button>
+       <table>
+            <tr class="semSelect">
+                <td><label for="listing[semester]">Select Your Semester:</label></td>
+                <td>
+                    <select class="sems" name="listing[semester]" id="semester" required>
+                        <option value="0">Select Semester</option>
+                        <option value="1">1st</option>
+                        <option value="2">2nd</option>
+                        <option value="3">3rd</option>
+                        <option value="4">4th</option>
+                        <option value="5">5th</option>
+                        <option value="6">6th</option>
+                        <option value="7">7th</option>
+                        <option value="8">8th</option>
+                    </select>
+                </td>
+            </tr>
+            <div class="allInputs">
+                <tr class="inputContainer">
+                    <td><label for="subject">Enter Subject Name: </label></td>
+                    <td><input class="uploadInputs" type="text" name="listing[subject]" placeholder="Subject Name" value="<%= notes.subject %>" required></td>
+                </tr>
+                <tr class="inputContainer">
+                    <td><label for="chapterName">Enter Chapter Name: </label></td>
+                    <td><input class="uploadInputs" type="text" name ="listing[title]" id="chapterName" placeholder="Chapter Name" value="<%= notes.title %>" required></td>
+                </tr>
+                <tr class="inputContainer">
+                    <td><label for="pdfURL">PDF URL: </label></td>
+                    <td><input class="uploadInputs" type="text" name="listing[pdfURL]" id="pdfURL" placeholder="Enter pdf URL" value="<%= notes.pdfURL %>" required></td>
+                </tr>
+            </div>
+        </table>
+        <button class="uploadButton">Update</button>
     </form>
 </body>
