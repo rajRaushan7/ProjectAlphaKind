@@ -7,6 +7,20 @@ body{
     min-height: 100vh;
     background-color: rgb(28,30,35);
     color: white;
+    background-image: url("https://cdn.pixabay.com/photo/2018/07/15/10/44/dna-3539309_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
+}
+body::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+    z-index: 0;
 }
 .container{
     flex: 1;
@@ -15,9 +29,15 @@ body{
 
 /* --------------------------------------- NAVBAR ----------------------------------------- */
 
+nav{
+    background-color: rgba(2, 2, 2, 0.207);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 3;
+}
 .nav-container {
     height: 5rem;
-    background-color: rgb(20, 22, 25);
     backdrop-filter: blur(5px);
     display: flex;
     width: 100%;
@@ -71,7 +91,7 @@ body{
     height: 100vh;
     width: 25rem;
     background-color: rgba(0, 0, 0, 0.726);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     display: none;
     flex-direction: column;
     z-index: 5;
@@ -176,22 +196,24 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
     height: 7rem;
     min-width: 10rem;
     width: 15rem;
     padding: 00.5rem;
     margin: 1rem 1rem;
     border-radius: 15px;
-    background: linear-gradient(135deg, #0a2d37, #082541);
+    background-color: rgba(41, 41, 41, 0.408);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.333);
     color: #ffffff;
+    box-shadow: 2px 2px 15px rgba(86, 86, 86, 0.416);
     font-weight: 500;
     font-size: 2rem;
     transition: 0.2s;
 }
 .sem-box:hover{
     transform: scale(1.03);
-    opacity: 0.7;
+    opacity: 0.9;
 }
 
 /* ----------------------------------- NOTES CARD ------------------------------------------------- */ 
@@ -203,7 +225,9 @@ a{
     align-items: center;
 }
 .card{
-    background-color: rgb(35,39,44);
+    background-color: rgba(59, 59, 59, 0.545);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.424);
     margin: 2rem;
     padding: 1rem;
     height: 15rem;
@@ -242,7 +266,7 @@ a{
 }
 .openBtn:hover {
     transform: scale(1.02);
-    box-shadow: 0 0 25px rgb(255, 255, 255);
+    border: 1px solid aqua;
 }
 .del-btn button{
     background-color: #690000;
@@ -306,7 +330,8 @@ a{
 }
 .notes-btn a:hover{
     transform: scale(1.07);
-    box-shadow: 0 0 15px #ffffff;
+    background-color: white;
+    color: black;
 }
 .pdfIcon i{
     color: rgb(98, 88, 154);
@@ -335,7 +360,9 @@ a{
 }
 .subjects-card{
     height: 2.5rem;
-    background-color: rgb(35,39,44);
+    background-color: rgba(0, 0, 0, 0.439);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.379);
     display: flex;
     align-items: center;
     margin: 1rem;
@@ -484,7 +511,9 @@ a{
 }
 .infoBox{
     width: 40%;
-    background-color: rgb(35,39,44);
+    background-color: rgba(111, 111, 111, 0.362);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.398);
     padding: 2rem;
     margin: 3rem 1rem;
     height: 20rem;
